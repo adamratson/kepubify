@@ -14,9 +14,7 @@ See the [releases](https://github.com/pgaskin/kepubify/releases/latest) page for
  
 ## Building
 
-Kepubify requires Go 1.16 or later. To install kepubify directly, run `go install github.com/pgaskin/kepubify@latest`. To build from source, clone this repository, and run `go build ./cmd/kepubify`.
-
-On Go 1.17 or later, additional optimizations are automatically used to significantly improve kepubify's performance by preventing unchanged files from being re-compressed. To use a [backported](https://github.com/pgaskin/kepubify/tree/forks/go116-zip.go117) version of these optimizations on Go 1.16, add the option `-tags zip117` to the build/install command. If you are using kepubify as a library in another application with `-tags zip117` enabled on Go 1.16, it must also use the backported package when passing a `*zip.Reader` to `(*kepub.Converter).Transform`.
+Kepubify requires Go 1.25 or later. To install kepubify directly, run `go install github.com/adamratson/kepubify@latest`. To build from source, clone this repository, and run `go build ./cmd/kepubify`.
 
 To build `seriesmeta`, a C compiler must be installed and CGO must be enabled.
 
@@ -31,4 +29,3 @@ This repository contains multiple main branches with code used by kepubify.
 | [master](https://github.com/pgaskin/kepubify/tree/master) | Kepubify, seriesmeta, and covergen (this branch). | [![kepubify](https://github.com/pgaskin/kepubify/actions/workflows/kepubify.yml/badge.svg?branch=master&event=push)](https://github.com/pgaskin/kepubify/actions/workflows/kepubify.yml) |
 | [gh-pages](https://github.com/pgaskin/kepubify/tree/gh-pages) | Kepubify website and JS/WASM library. | [![website](https://github.com/pgaskin/kepubify/actions/workflows/website.yml/badge.svg?branch=gh-pages&event=push)](https://github.com/pgaskin/kepubify/actions/workflows/website.yml) |
 | [forks/html](https://github.com/pgaskin/kepubify/tree/forks/html) | Fork of [golang.org/x/net/html](https://pkg.go.dev/golang.org/x/net/html) with additional features and modifications required by kepubify. | [![forks - html](https://github.com/pgaskin/kepubify/actions/workflows/_html.yml/badge.svg?branch=forks%2Fhtml&event=push)](https://github.com/pgaskin/kepubify/actions/workflows/_html.yml) |
-| [forks/go116-zip.go117](https://github.com/pgaskin/kepubify/tree/forks/go116-zip.go117) | Fork of [archive/zip](https://pkg.go.dev/archive/zip) from Go 1.17 backported to Go 1.16 for performance improvements. | [![forks - go116-zip.go117](https://github.com/pgaskin/kepubify/actions/workflows/_go116-zip.go117.yml/badge.svg?branch=forks%2Fgo116-zip.go117&event=push)](https://github.com/pgaskin/kepubify/actions/workflows/_go116-zip.go117.yml) |

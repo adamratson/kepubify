@@ -1,6 +1,7 @@
 package kepub
 
 import (
+	"archive/zip"
 	"bytes"
 	"context"
 	"encoding/xml"
@@ -13,14 +14,11 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/pgaskin/kepubify/v4/internal/zip"
 	"golang.org/x/sync/errgroup"
 )
 
 // Convert converts the EPUB root r into a new EPUB written to w. If r is a
-// (*zip.Reader) (from archive/zip by default, or from
-// github.com/pgaskin/kepubify/_/go116-zip.go117/archive/zip if the zip117 build
-// tag is used (even on Go 1.17)), the original zip metadata is preserved where
+// (*zip.Reader), the original zip metadata is preserved where
 // possible, and additional optimizations are applied to prevent re-compressing
 // unchanged data where possible. If processing untrusted EPUBs, r should not
 // point to an unrestricted on-disk filesystem since paths are not sanitized; it
@@ -443,11 +441,11 @@ func zipReplace(z *zip.Writer, f *zip.FileHeader, r io.Reader) error {
 	return err
 }
 
-// zipCopy copies a file from one zip archive to another. On Go 1.17+, this uses
+// zipCopy copies a file from one zip archive to another using
 // (*zip.Writer).Copy, which is much faster than reading and re-compressing the
 // data.
 func zipCopy(z *zip.Writer, f *zip.File) error {
-	return zipCopyImpl(z, f)
+	return z.Copy(f)
 }
 
 // zipCopy copies a file from a FS to a zip using the information in the
