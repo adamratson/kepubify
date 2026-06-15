@@ -19,11 +19,11 @@ import (
 	"github.com/pgaskin/kepubify/_/html/golang.org/x/net/html"
 	"github.com/pgaskin/kepubify/_/html/golang.org/x/net/html/atom"
 
-	//go:linkname transformContentKoboSpans github.com/pgaskin/kepubify/v4/kepub.transformContentKoboSpans
+	//go:linkname transformContentKoboSpans github.com/adamratson/kepubify/v4/kepub.transformContentKoboSpans
 
 	_ "unsafe"
 
-	_ "github.com/pgaskin/kepubify/v4/kepub"
+	_ "github.com/adamratson/kepubify/v4/kepub"
 )
 
 func transformContentKoboSpans(*html.Node)

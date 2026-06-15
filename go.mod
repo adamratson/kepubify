@@ -1,4 +1,4 @@
-module github.com/pgaskin/kepubify/v4
+module github.com/adamratson/kepubify/v4
 
 go 1.25.0
 
